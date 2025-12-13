@@ -2,6 +2,14 @@
 import { ref, computed, watch } from 'vue'
 import { db } from "./firebase"
 import { onSnapshot, query, collection, where, doc, setDoc, updateDoc, increment } from "firebase/firestore"
+import Datepicker from 'vue3-datepicker'
+
+const disabledDates = computed(() => {
+  const today = new Date()
+  today.setHours(23, 59, 59, 999) // end of today
+  return { to: today }
+})
+
 
 // Booking state
 const selectedSlot = ref('')
@@ -20,12 +28,11 @@ const timeSlots = ['8 a.m. – 10 a.m.', '10 a.m. – 12 p.m.']
 const minDate = computed(() => {
   const d = new Date()
   d.setDate(d.getDate() + 1) // tomorrow
-  const year = d.getFullYear()
-  const month = String(d.getMonth() + 1).padStart(2, '0') // months 0-11
-  const day = String(d.getDate()).padStart(2, '0')
-  return `${year}-${month}-${day}` // local YYYY-MM-DD
+  return d
 })
-const selectedDate = ref(minDate.value)
+const selectedDate = ref(new Date(new Date().setDate(new Date().getDate() + 1)))
+
+
 
 // Sessions
 const sessions = ref([])
@@ -191,7 +198,11 @@ const closeModal = () => {
 
     <!-- Date Picker -->
     <label>Select Date:</label>
-    <input type="date" v-model="selectedDate" :min="minDate" />
+    <Datepicker
+      v-model="selectedDate"
+      :disabled-dates="disabledDates"
+      placeholder="Select Date"
+    />
     <p v-if="isWeekend" class="error">
       ❌ Weekend booking is not available. Please select a weekday.
     </p>
@@ -402,6 +413,39 @@ button.disabled {
   font-size: 0.85rem;
   margin-top: 6px;
   margin-bottom: 10px;
+}
+
+
+/* Datepicker input */
+.vue3-datepicker__input {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #999;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #000;
+}
+
+.vue3-datepicker__input:focus {
+  border-color: #4caf50;
+  outline: none;
+}
+
+/* Calendar popup */
+.vue3-datepicker__calendar {
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  font-size: 0.9rem;
+}
+
+.vue3-datepicker__calendar .vue3-datepicker__day--disabled {
+  color: #ccc;
+}
+
+.vue3-datepicker__calendar .vue3-datepicker__day--today {
+  border: 1px solid #4caf50;
+  border-radius: 50%;
 }
 
 </style>
