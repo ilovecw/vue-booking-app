@@ -32,8 +32,6 @@ const minDate = computed(() => {
 })
 const selectedDate = ref(new Date(new Date().setDate(new Date().getDate() + 1)))
 
-
-
 // Sessions
 const sessions = ref([])
 
@@ -198,11 +196,16 @@ const closeModal = () => {
 
     <!-- Date Picker -->
     <label>Select Date:</label>
-    <Datepicker
-      v-model="selectedDate"
-      :disabled-dates="disabledDates"
-      placeholder="Select Date"
-    />
+<Datepicker
+  v-model="selectedDate"
+  :lower-limit="new Date(new Date().setDate(new Date().getDate() + 1))"
+  ref="dp"
+  @closed="() => $refs.dp.$el.querySelector('input').blur()"
+/>
+
+
+
+
     <p v-if="isWeekend" class="error">
       ❌ Weekend booking is not available. Please select a weekday.
     </p>
