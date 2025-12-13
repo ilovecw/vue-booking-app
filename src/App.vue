@@ -201,6 +201,7 @@ const closeModal = () => {
   :lower-limit="new Date(new Date().setDate(new Date().getDate() + 1))"
   ref="dp"
   @closed="() => $refs.dp.$el.querySelector('input').blur()"
+  :class="'my-datepicker-input'"
 />
 
 
@@ -418,16 +419,18 @@ button.disabled {
   margin-bottom: 10px;
 }
 
-:root {
-  --vdp-bg-color: #fff;      /* calendar popup background */
-  --vdp-text-color: #000;    /* text in calendar */
+.my-datepicker-input {
+  background-color: #c51515;
+  color: #36b1ab;
+  border: 1px solid #999;
+  border-radius: 8px;
+  padding: 12px;
 }
-
 
 /* Datepicker input */
 .vue3-datepicker__input {
-  background-color: #fff; /* white input */
-  color: #000;            /* black text */
+  background-color: #fff; 
+  color: #000;         
   border: 1px solid #999;
   border-radius: 8px;
   padding: 12px;
