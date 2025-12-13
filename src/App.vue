@@ -272,6 +272,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
+  color: #000;
 }
 
 /* Container stays white */
