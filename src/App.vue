@@ -420,8 +420,8 @@ button.disabled {
 }
 
 .my-datepicker-input {
-  background-color: #c51515;
-  color: #36b1ab;
+  background-color: #fff;
+  color: #000;
   border: 1px solid #999;
   border-radius: 8px;
   padding: 12px;
