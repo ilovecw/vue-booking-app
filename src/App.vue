@@ -421,13 +421,13 @@ button.disabled {
 
 /* Datepicker input */
 .vue3-datepicker__input {
-  width: 100%;
-  padding: 12px;
-  font-size: 1rem;
+  background-color: #fff; /* white input */
+  color: #000;            /* black text */
   border: 1px solid #999;
   border-radius: 8px;
+  padding: 12px;
+  width: 100%;
   box-sizing: border-box;
-  color: #000;
 }
 
 .vue3-datepicker__input:focus {
