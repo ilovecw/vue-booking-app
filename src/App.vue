@@ -418,6 +418,11 @@ button.disabled {
   margin-bottom: 10px;
 }
 
+:root {
+  --vdp-bg-color: #fff;      /* calendar popup background */
+  --vdp-text-color: #000;    /* text in calendar */
+}
+
 
 /* Datepicker input */
 .vue3-datepicker__input {
