@@ -328,6 +328,8 @@ input[type="number"] {
   border-radius: 8px;
   border: 1px solid #999;
   box-sizing: border-box;
+  background-color: #fff;
+  color: #000;
 }
 
 /* Time Slot Buttons */
@@ -425,17 +427,6 @@ button.disabled {
   border: 1px solid #999;
   border-radius: 8px;
   padding: 12px;
-}
-
-/* Datepicker input */
-.vue3-datepicker__input {
-  background-color: #fff; 
-  color: #000;         
-  border: 1px solid #999;
-  border-radius: 8px;
-  padding: 12px;
-  width: 100%;
-  box-sizing: border-box;
 }
 
 .vue3-datepicker__input:focus {
